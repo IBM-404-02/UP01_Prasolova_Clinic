@@ -12,22 +12,17 @@ namespace UP01_Prasolova_Clinic
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class ServiceRendered
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
-        {
-            this.ServicesRendered = new HashSet<ServicesRendered>();
-        }
-    
         public int ID { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
-        public string FIO { get; set; }
-        public string Photo { get; set; }
+        public int ServiceTypeID { get; set; }
+        public int UserID { get; set; }
+        public System.DateTime Date { get; set; }
+        public string ServiceName { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServicesRendered> ServicesRendered { get; set; }
+        public virtual ServiceType ServiceType { get; set; }
+        public virtual User User { get; set; }
     }
 }

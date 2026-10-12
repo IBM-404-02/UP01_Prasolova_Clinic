@@ -25,8 +25,8 @@ namespace UP01_Prasolova_Clinic
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ServicesRendered> ServicesRendered { get; set; }
-        public virtual DbSet<ServiceTypes> ServiceTypes { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<ServiceRendered> ServicesRendered { get; set; }
+        public virtual DbSet<ServiceType> ServiceTypes { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
