@@ -27,7 +27,6 @@ namespace UP01_Prasolova_Clinic
     
         public virtual DbSet<ServicesRendered> ServicesRendered { get; set; }
         public virtual DbSet<ServiceTypes> ServiceTypes { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }

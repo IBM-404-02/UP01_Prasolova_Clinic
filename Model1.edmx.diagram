@@ -7,7 +7,6 @@
       <Diagram DiagramId="bee3d32c3bf14619a783e1f1480ccdca" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="DB_Prasolova_ClinicModel.ServicesRendered" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_Prasolova_ClinicModel.ServiceTypes" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Prasolova_ClinicModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_Prasolova_ClinicModel.Users" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
         <AssociationConnector Association="DB_Prasolova_ClinicModel.FK_ServicesRendered_ServiceTypes" ManuallyRouted="false" />
         <AssociationConnector Association="DB_Prasolova_ClinicModel.FK_ServicesRendered_Users" ManuallyRouted="false" />
