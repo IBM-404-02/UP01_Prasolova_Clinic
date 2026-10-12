@@ -10,7 +10,7 @@ namespace UP01_Prasolova_Clinic
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml
-    /// </summary>
+    /// </summary
     public partial class App : Application
     {
     }
