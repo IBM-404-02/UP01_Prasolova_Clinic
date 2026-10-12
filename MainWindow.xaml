@@ -1,12 +1,28 @@
-﻿<Window x:Class="UP01_Prasolova_Clinic.MainWindow"
+﻿<Window x:Class="UP01_Prasolova_Clinic.MainWindow"  Icon="/res/clinic.ico"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UP01_Prasolova_Clinic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Медицинская клиника" Height="600" Width="900">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="ButtonBack" Content="Назад" Grid.Row="0"
+                HorizontalAlignment="Left" Margin="10,0,0,0"
+                Width="100" Height="30" Click="ButtonBack_Click"/>
+
+        <Frame x:Name="MainFrame" Grid.Row="1"
+               NavigationUIVisibility="Hidden"/>
+
+        <TextBlock x:Name="DateTimeNow" Grid.Row="2"
+                   HorizontalAlignment="Right" VerticalAlignment="Center"
+                   Margin="0,0,10,0"/>
+
     </Grid>
 </Window>
