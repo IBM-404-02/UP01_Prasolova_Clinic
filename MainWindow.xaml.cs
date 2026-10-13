@@ -23,6 +23,7 @@ namespace UP01_Prasolova_Clinic
         public MainWindow()
         {
             InitializeComponent();
+            ApplyTheme(Properties.Settings.Default.Theme);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -46,6 +47,26 @@ namespace UP01_Prasolova_Clinic
         {
             if (MainFrame.CanGoBack)
                 MainFrame.GoBack();
+        }
+
+        private void ApplyTheme(string fileName)
+        {
+            var uri = new Uri(fileName, UriKind.Relative);
+            ResourceDictionary dict = Application.LoadComponent(uri) as ResourceDictionary;
+
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(dict);
+
+            Properties.Settings.Default.Theme = fileName;
+            Properties.Settings.Default.Save();
+        }
+
+        private void ButtonTheme_Click(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.Theme == "Dictionary.xaml")
+                ApplyTheme("GreenTheme.xaml");
+            else
+                ApplyTheme("Dictionary.xaml");
         }
     }
 }
