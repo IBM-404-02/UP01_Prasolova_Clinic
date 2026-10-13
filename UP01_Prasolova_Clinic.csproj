@@ -134,6 +134,8 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="res\OpenSans-Regular.ttf" />
+    <Resource Include="res\OpenSans-Bold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
