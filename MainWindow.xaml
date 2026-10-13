@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:UP01_Prasolova_Clinic"
         mc:Ignorable="d"
         Title="Медицинская клиника" Height="600" Width="900"
-        Loaded="Window_Loaded" Closing="Window_Closing">
+        Loaded="Window_Loaded" Closing="Window_Closing"
+        Background="{DynamicResource BackgroundBrush}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
@@ -14,16 +15,24 @@
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
+        <Border Grid.Row="0" Background="{DynamicResource PanelBrush}"/>
+        <Border Grid.Row="2" Background="{DynamicResource PanelBrush}"/>
+
         <Button x:Name="ButtonBack" Content="Назад" Grid.Row="0"
-                HorizontalAlignment="Left" Margin="10,0,0,0"
-                Width="100" Height="30" Click="ButtonBack_Click"/>
+            HorizontalAlignment="Left" Click="ButtonBack_Click"
+            ToolTip="Вернуться на предыдущую страницу"/>
+
+        <Button x:Name="ButtonTheme" Content="Сменить тему" Grid.Row="0"
+            HorizontalAlignment="Right" Click="ButtonTheme_Click"
+            ToolTip="Переключить стиль оформления"/>
 
         <Frame x:Name="MainFrame" Grid.Row="1"
-               NavigationUIVisibility="Hidden"/>
+           NavigationUIVisibility="Hidden"/>
 
         <TextBlock x:Name="DateTimeNow" Grid.Row="2"
-                   HorizontalAlignment="Right" VerticalAlignment="Center"
-                   Margin="0,0,10,0"/>
-
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Margin="0,0,10,0"
+               FontFamily="{DynamicResource MainFont}"
+               Foreground="{DynamicResource TextBrush}"/>
     </Grid>
 </Window>
