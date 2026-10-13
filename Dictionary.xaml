@@ -91,4 +91,13 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
     </Style>
+
+    <Style x:Key="HintText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource MainFont}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{StaticResource HintBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="13,0,0,0"/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
+    </Style>
 </ResourceDictionary>
