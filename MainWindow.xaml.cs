@@ -25,6 +25,7 @@ namespace UP01_Prasolova_Clinic
         {
             InitializeComponent();
             ApplyTheme(Properties.Settings.Default.Theme);
+            MainFrame.Navigate(new Pages.AuthPage());
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -69,5 +70,17 @@ namespace UP01_Prasolova_Clinic
             else
                 ApplyTheme("Dictionary.xaml");
         }
+
+        private void MainFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            if (e.Content is Page page)
+                Title = "Медицинская клиника — " + page.Title;
+
+            if (MainFrame.CanGoBack)
+                ButtonBack.Visibility = Visibility.Visible;
+            else
+                ButtonBack.Visibility = Visibility.Hidden;
+        }
+
     }
 }

@@ -35,7 +35,7 @@ namespace UP01_Prasolova_Clinic.Pages
             }
 
             User user = Core.Authenticate(TextBoxLogin.Text.Trim(), PasswordBox.Password);
-            if (user != null)
+            if (user == null)
             {
                 failedAttemps++;
                 Core.ShowError("Неверный логин или пароль");
