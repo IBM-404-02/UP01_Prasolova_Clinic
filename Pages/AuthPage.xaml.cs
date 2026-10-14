@@ -20,7 +20,7 @@ namespace UP01_Prasolova_Clinic.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
-        private int failedAttemps = 0;
+        private int failedAttempts = 0;
         public AuthPage()
         {
             InitializeComponent();
@@ -37,12 +37,12 @@ namespace UP01_Prasolova_Clinic.Pages
             User user = Core.Authenticate(TextBoxLogin.Text.Trim(), PasswordBox.Password);
             if (user == null)
             {
-                failedAttemps++;
+                failedAttempts++;
                 Core.ShowError("Неверный логин или пароль");
                 return;
             }
 
-            failedAttemps = 0;
+            failedAttempts = 0;
             Core.CurrentUser = user;
             Core.ShowInfo("Добро пожаловать, " + user.FIO + "!");
 
