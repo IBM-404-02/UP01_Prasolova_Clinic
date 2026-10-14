@@ -21,6 +21,8 @@ namespace UP01_Prasolova_Clinic.Pages
     public partial class AuthPage : Page
     {
         private int failedAttempts = 0;
+        private readonly Random random = new Random();
+        private string captchaText = "";
         public AuthPage()
         {
             InitializeComponent();
