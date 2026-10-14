@@ -12,30 +12,61 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Вход в систему" Style="{DynamicResource TitleText}"/>
 
-            <Label Content="Логин"/>
-            <Grid>
-                <TextBox x:Name="TextBoxLogin" MaxLength="50"
-                     ToolTip="Введите логин, указанный при регистрации"
-                     TextChanged="TextBoxLogin_TextChanged"/>
-                <TextBlock x:Name="txtHintLogin" Text="Введите логин"
-                       Style="{DynamicResource HintText}"/>
-            </Grid>
+            <StackPanel x:Name="PanelLogin">
+                <Label Content="Логин"/>
+                <Grid>
+                    <TextBox x:Name="TextBoxLogin" MaxLength="50"
+                         ToolTip="Введите логин, указанный при регистрации"
+                         TextChanged="TextBoxLogin_TextChanged"/>
+                    <TextBlock x:Name="txtHintLogin" Text="Введите логин"
+                           Style="{DynamicResource HintText}"/>
+                </Grid>
 
-            <Label Content="Пароль"/>
-            <Grid>
-                <PasswordBox x:Name="PasswordBox" MaxLength="50"
-                         ToolTip="Введите пароль"
-                         PasswordChanged="PasswordBox_PasswordChanged"/>
-                <TextBlock x:Name="txtHintPass" Text="Введите пароль"
-                       Style="{DynamicResource HintText}"/>
-            </Grid>
+                <Label Content="Пароль"/>
+                <Grid>
+                    <PasswordBox x:Name="PasswordBox" MaxLength="50"
+                             ToolTip="Введите пароль"
+                             PasswordChanged="PasswordBox_PasswordChanged"/>
+                    <TextBlock x:Name="txtHintPass" Text="Введите пароль"
+                           Style="{DynamicResource HintText}"/>
+                </Grid>
 
-            <Button x:Name="ButtonEnter" Content="Войти"
-                ToolTip="Войти в систему" Click="ButtonEnter_Click"/>
-            <Button x:Name="ButtonReg" Content="Регистрация"
-                ToolTip="Создать новую учётную запись" Click="ButtonReg_Click"/>
-            <Button x:Name="ButtonChangePassword" Content="Смена пароля"
-                ToolTip="Изменить пароль" Click="ButtonChangePassword_Click"/>
+                <Button x:Name="ButtonEnter" Content="Войти"
+                    ToolTip="Войти в систему" Click="ButtonEnter_Click"/>
+                <Button x:Name="ButtonReg" Content="Регистрация"
+                    ToolTip="Создать новую учётную запись" Click="ButtonReg_Click"/>
+                <Button x:Name="ButtonChangePassword" Content="Смена пароля"
+                    ToolTip="Изменить пароль" Click="ButtonChangePassword_Click"/>
+            </StackPanel>
+
+            <StackPanel x:Name="PanelCaptcha" Visibility="Collapsed">
+                <TextBlock Text="Слишком много неверных попыток. Введите символы с картинки:"
+                       Style="{DynamicResource NormalText}"
+                       TextWrapping="Wrap" TextAlignment="Center" Width="260"/>
+
+                <Border Background="{DynamicResource PanelBrush}"
+                    Width="250" Height="60" Margin="5" CornerRadius="4">
+                    <TextBlock x:Name="TextCaptcha"
+                           FontFamily="Courier New" FontSize="30"
+                           FontWeight="Heavy" FontStyle="Italic"
+                           TextDecorations="Strikethrough"
+                           Foreground="{DynamicResource ErrorBrush}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+
+                <Grid>
+                    <TextBox x:Name="TextBoxCaptcha" MaxLength="5"
+                         ToolTip="Введите символы с картинки с учётом регистра"
+                         TextChanged="TextBoxCaptcha_TextChanged"/>
+                    <TextBlock x:Name="txtHintCaptcha" Text="Введите капчу"
+                           Style="{DynamicResource HintText}"/>
+                </Grid>
+
+                <Button x:Name="ButtonCaptcha" Content="Подтвердить"
+                    ToolTip="Проверить введённую капчу" Click="ButtonCaptcha_Click"/>
+                <Button x:Name="ButtonNewCaptcha" Content="Обновить капчу"
+                    ToolTip="Показать другие символы" Click="ButtonNewCaptcha_Click"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
