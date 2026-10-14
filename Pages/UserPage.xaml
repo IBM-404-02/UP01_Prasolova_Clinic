@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:UP01_Prasolova_Clinic.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UserPage">
+      Title="Пользователь">
 
     <Grid>
         
