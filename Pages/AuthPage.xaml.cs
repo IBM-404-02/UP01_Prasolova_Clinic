@@ -30,6 +30,7 @@ namespace UP01_Prasolova_Clinic.Pages
 
         private void ButtonEnter_Click(object sender, RoutedEventArgs e)
         {
+
             if (string.IsNullOrWhiteSpace(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password))
             {
                 Core.ShowError("Введите логин и пароль");
@@ -44,6 +45,18 @@ namespace UP01_Prasolova_Clinic.Pages
                 return;
             }
 
+
+            if (user == null)
+            {
+                failedAttempts++;
+                Core.ShowError("Неверный логин или пароль");
+
+                if (failedAttempts >= 3)
+                    ShowCaptcha(true);
+
+                return;
+            }
+
             failedAttempts = 0;
             Core.CurrentUser = user;
             Core.ShowInfo("Добро пожаловать, " + user.FIO + "!");
@@ -52,6 +65,7 @@ namespace UP01_Prasolova_Clinic.Pages
                 NavigationService.Navigate(new AdminPage());
             else
                 NavigationService.Navigate(new UserPage());
+
         }
 
         private void ButtonReg_Click(object sender, RoutedEventArgs e)
@@ -78,6 +92,70 @@ namespace UP01_Prasolova_Clinic.Pages
                 txtHintPass.Visibility = Visibility.Visible;
             else
                 txtHintPass.Visibility = Visibility.Hidden;
+        }
+
+        private void GenerateCaptcha()
+        {
+            string chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
+            captchaText = "";
+
+            for (int i = 0; i < 5; i++)
+            {
+                captchaText += chars[random.Next(chars.Length)];
+            }
+
+            TextCaptcha.Text = captchaText;
+            TextBoxCaptcha.Clear();
+        }
+
+        private void ShowCaptcha(bool show)
+        {
+            if (show)
+            {
+                PanelLogin.Visibility = Visibility.Collapsed;
+                PanelCaptcha.Visibility = Visibility.Visible;
+                GenerateCaptcha();
+            }
+            else
+            {
+                PanelCaptcha.Visibility = Visibility.Collapsed;
+                PanelLogin.Visibility = Visibility.Visible;
+                TextBoxLogin.Clear();
+                PasswordBox.Clear();
+            }
+        }
+
+        private void ButtonCaptcha_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxCaptcha.Text))
+            {
+                Core.ShowError("Введите символы с картинки");
+                return;
+            }
+
+            if (TextBoxCaptcha.Text != captchaText)
+            {
+                Core.ShowError("Капча введена неверно. Попробуйте еще раз");
+                GenerateCaptcha();
+                return;
+            }
+
+            failedAttempts = 0;
+            Core.ShowInfo("Капча введена верно. Повторите вход");
+            ShowCaptcha(false);
+        }
+
+        private void ButtonNewCaptcha_Click(Object sender, RoutedEventArgs e)
+        {
+            GenerateCaptcha();
+        }
+
+        private void TextBoxCaptcha_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TextBoxCaptcha.Text))
+                txtHintCaptcha.Visibility = Visibility.Visible;
+            else
+                txtHintCaptcha.Visibility = Visibility.Collapsed;
         }
     }
 
