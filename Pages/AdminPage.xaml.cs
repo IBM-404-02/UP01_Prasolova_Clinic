@@ -93,5 +93,29 @@ namespace UP01_Prasolova_Clinic.Pages
             Core.ShowInfo("Записи удалены");
             UpdateData();
         }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddEditServicePage(null));
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceRendered selected = DataGridServices.SelectedItem as ServiceRendered;
+
+            if (selected == null)
+            {
+                Core.ShowError("Выберите запись для редактирования");
+                return;
+            }
+
+            NavigationService.Navigate(new AddEditServicePage(selected));
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (IsVisible)
+                UpdateData();
+        }
     }
 }

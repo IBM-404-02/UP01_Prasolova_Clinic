@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:UP01_Prasolova_Clinic.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Администратор">
+      Title="Администратор"
+      IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -52,8 +53,12 @@
         </DataGrid>
 
         <WrapPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0,0,0,5">
+            <Button x:Name="ButtonAdd" Content="Добавить" ToolTip="Добавить новую запись"
+            Click="ButtonAdd_Click"/>
+            <Button x:Name="ButtonEdit" Content="Редактировать" ToolTip="Изменить выбранную запись"
+            Click="ButtonEdit_Click"/>
             <Button x:Name="ButtonDelete" Content="Удалить" ToolTip="Удалить выбранные записи"
-                Click="ButtonDelete_Click"/>
+            Click="ButtonDelete_Click"/>
         </WrapPanel>
     </Grid>
 </Page>
