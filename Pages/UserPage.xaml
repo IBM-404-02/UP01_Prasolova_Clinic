@@ -9,46 +9,47 @@
       Title="Пользователь">
 
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
-                <TextBlock Text="Смена пароля" Style="{DynamicResource TitleText}"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                <Label Content="Логин"/>
+            <TextBlock Grid.Row="0" Text="Мои услуги" Style="{DynamicResource TitleText}" Margin="0,10,0,5"/>
+
+            <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
                 <Grid>
-                    <TextBox x:Name="TextBoxLogin" MaxLength="50"
-                         ToolTip="Введите ваш логин"
-                         TextChanged="TextBox_TextChanged"/>
-                    <TextBlock Text="Введите логин" Style="{DynamicResource HintText}"/>
+                    <TextBox x:Name="TextBoxSearch" ToolTip="Поиск по названию услуги"
+                     TextChanged="TextBoxSearch_TextChanged"/>
+                    <TextBlock x:Name="txtHintSearch" Text="Поиск по названию услуги"
+                       Style="{DynamicResource HintText}"/>
                 </Grid>
+                <ComboBox x:Name="ComboBoxType" DisplayMemberPath="Name"
+                  ToolTip="Фильтр по типу услуги"
+                  SelectionChanged="ComboBoxType_SelectionChanged"/>
+                <ComboBox x:Name="ComboBoxSort" SelectedIndex="0"
+                  ToolTip="Сортировка"
+                  SelectionChanged="ComboBoxSort_SelectionChanged">
+                    <ComboBoxItem Content="Сначала новые"/>
+                    <ComboBoxItem Content="Сначала старые"/>
+                    <ComboBoxItem Content="Цена по возрастанию"/>
+                    <ComboBoxItem Content="Цена по убыванию"/>
+                </ComboBox>
+                <Button Content="Сбросить" ToolTip="Сбросить поиск, фильтр и сортировку"
+                Click="ButtonReset_Click"/>
+            </WrapPanel>
 
-                <Label Content="Текущий пароль"/>
-                <Grid>
-                    <PasswordBox x:Name="PasswordBoxCurrent" MaxLength="50"
-                             ToolTip="Введите пароль, который используете сейчас"
-                             PasswordChanged="PasswordBox_PasswordChanged"/>
-                    <TextBlock Text="Текущий пароль" Style="{DynamicResource HintText}"/>
-                </Grid>
-
-                <Label Content="Новый пароль"/>
-                <Grid>
-                    <PasswordBox x:Name="PasswordBoxNew" MaxLength="50"
-                             ToolTip="Не менее 6 символов: английские буквы и хотя бы одна цифра"
-                             PasswordChanged="PasswordBox_PasswordChanged"/>
-                    <TextBlock Text="Новый пароль" Style="{DynamicResource HintText}"/>
-                </Grid>
-
-                <Label Content="Подтверждение нового пароля"/>
-                <Grid>
-                    <PasswordBox x:Name="PasswordBoxConfirm" MaxLength="50"
-                             ToolTip="Повторите новый пароль"
-                             PasswordChanged="PasswordBox_PasswordChanged"/>
-                    <TextBlock Text="Повторите новый пароль" Style="{DynamicResource HintText}"/>
-                </Grid>
-
-                <Button x:Name="ButtonSave" Content="Сохранить"
-                    ToolTip="Сохранить новый пароль"
-                    Click="ButtonSave_Click" Margin="5,15,5,5"/>
-            </StackPanel>
-        </ScrollViewer>
+            <DataGrid x:Name="DataGridServices" Grid.Row="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat=dd.MM.yyyy}" Width="100"/>
+                    <DataGridTextColumn Header="Тип" Binding="{Binding ServiceType.Name}" Width="170"/>
+                    <DataGridTextColumn Header="Услуга" Binding="{Binding ServiceName}" Width="*"/>
+                    <DataGridTextColumn Header="Кол-во" Binding="{Binding Quantity}" Width="75"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat={}{0:N2}}" Width="100"/>
+                    <DataGridTextColumn Header="Сумма" Binding="{Binding Total, StringFormat={}{0:N2}}" Width="110"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>
