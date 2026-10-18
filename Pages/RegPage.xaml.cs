@@ -47,6 +47,18 @@ namespace UP01_Prasolova_Clinic.Pages
             else
                 grid.Children[1].Visibility = Visibility.Hidden;
         }
+
+        private void TextBoxLogin_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Regex.IsMatch(e.Text, @"^[A-Za-z0-9_]+$"))
+                e.Handled = true;
+        }
+
+        private void TextBoxFIO_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Regex.IsMatch(e.Text, @"^[а-яА-ЯёЁ\-]+$"))
+                e.Handled = true;
+        }
     }
 
 
