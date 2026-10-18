@@ -1,0 +1,59 @@
+﻿<Page x:Class="UP01_Prasolova_Clinic.Pages.AddEditServicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Услуга">
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+                <TextBlock x:Name="TextTitle" Style="{DynamicResource TitleText}"/>
+
+                <Label Content="Пациент"/>
+                <ComboBox x:Name="ComboBoxPatient" DisplayMemberPath="FIO"
+                          ToolTip="Выберите пациента"/>
+
+                <Label Content="Тип услуги"/>
+                <ComboBox x:Name="ComboBoxType" DisplayMemberPath="Name"
+                          ToolTip="Выберите тип услуги"/>
+
+                <Label Content="Дата оказания"/>
+                <DatePicker x:Name="DatePickerDate" Width="250" Height="32" Margin="5"
+                            FontSize="14" FontFamily="{DynamicResource MainFont}"
+                            ToolTip="Дата оказания услуги (не позднее сегодняшнего дня)"/>
+
+                <Label Content="Название услуги"/>
+                <Grid>
+                    <TextBox x:Name="TextBoxName" MaxLength="150"
+                             ToolTip="Например: Приём терапевта"
+                             TextChanged="TextBox_TextChanged"/>
+                    <TextBlock Text="Название услуги" Style="{DynamicResource HintText}"/>
+                </Grid>
+
+                <Label Content="Количество (от 1 до 100)"/>
+                <Grid>
+                    <TextBox x:Name="TextBoxQuantity" MaxLength="3"
+                             ToolTip="Целое число от 1 до 100"
+                             TextChanged="TextBox_TextChanged"
+                             PreviewTextInput="TextBoxQuantity_PreviewTextInput"/>
+                    <TextBlock Text="1" Style="{DynamicResource HintText}"/>
+                </Grid>
+
+                <Label Content="Цена за единицу, руб. (от 1 до 1 000 000)"/>
+                <Grid>
+                    <TextBox x:Name="TextBoxPrice" MaxLength="10"
+                             ToolTip="Число от 1 до 1 000 000, копейки через запятую"
+                             TextChanged="TextBox_TextChanged"
+                             PreviewTextInput="TextBoxPrice_PreviewTextInput"/>
+                    <TextBlock Text="1500,00" Style="{DynamicResource HintText}"/>
+                </Grid>
+
+                <Button Content="Сохранить" ToolTip="Сохранить данные"
+                        Click="ButtonSave_Click" Margin="5,15,5,5"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
