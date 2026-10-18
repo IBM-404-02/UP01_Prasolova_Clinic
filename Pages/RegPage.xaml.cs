@@ -59,6 +59,67 @@ namespace UP01_Prasolova_Clinic.Pages
             if (!Regex.IsMatch(e.Text, @"^[а-яА-ЯёЁ\-]+$"))
                 e.Handled = true;
         }
+
+        private void ButtonRegister_Click(object sender, RoutedEventArgs e)
+        {
+            string login = TextBoxLogin.Text.Trim();
+            string fio = TextBoxFIO.Text.Trim();
+            string password = PasswordBoxNew.Password;
+            string confirm = PasswordBoxConfirm.Password;
+
+            if (login == "" || fio == "" || password == "" || confirm == "")
+            {
+                Core.ShowError("Заполните все поля");
+                return;
+            }
+
+            if (!Regex.IsMatch(login, @"^[A-Za-z0-9_]{3,50}$"))
+            {
+                Core.ShowError("Логин должен содержать от 3 до 50 символов: английские буквы, цифры или _");
+                return;
+            }
+
+            if (Core.Context.Users.Any(u => u.Login == login))
+            {
+                Core.ShowError("Пользователь с таким логином уже существует");
+                return;
+            }
+
+            if (!Regex.IsMatch(fio, @"^[А-ЯЁ][а-яё]+( [А-ЯЁ][а-яё]+){1,2}$"))
+            {
+                Core.ShowError("Введите ФИО на русском языке: 2–3 слова, каждое с заглавной буквы");
+                return;
+            }
+
+            string passwordError = Core.CheckPassword(password);
+            if (passwordError != null)
+            {
+                Core.ShowError(passwordError);
+                return;
+            }
+
+            if (password != confirm)
+            {
+                Core.ShowError("Пароли не совпадают");
+                return;
+            }
+
+            string role = ((ComboBoxItem)ComboBoxRole.SelectedItem).Tag.ToString();
+
+            User newUser = new User
+            {
+                Login = login,
+                Password = Core.GetHash(password),
+                Role = role,
+                FIO = fio
+            };
+
+            Core.Context.Users.Add(newUser);
+            Core.Context.SaveChanges();
+
+            Core.ShowInfo("Пользователь успешно зарегистрирован!");
+            NavigationService.GoBack();
+        }
     }
 
 
