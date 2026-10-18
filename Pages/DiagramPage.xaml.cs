@@ -112,6 +112,7 @@ namespace UP01_Prasolova_Clinic.Pages
         {
             try
             {
+                MessageFilter.Register();
                 var app = new Word.Application();
                 app.Visible = true;
                 Word.Document document = CreateWordReport(app);
@@ -126,12 +127,17 @@ namespace UP01_Prasolova_Clinic.Pages
             {
                 Core.ShowError("Не удалось создать документ Word: " + ex.Message);
             }
+            finally
+            {
+                MessageFilter.Revoke();
+            }
         }
 
         private void ButtonPdf_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             try
             {
+                MessageFilter.Register();
                 var app = new Word.Application();
                 app.Visible = true;
                 Word.Document document = CreateWordReport(app);
@@ -146,12 +152,17 @@ namespace UP01_Prasolova_Clinic.Pages
             {
                 Core.ShowError("Не удалось создать PDF: " + ex.Message);
             }
+            finally
+            {
+                MessageFilter.Revoke();
+            }
         }
 
         private void ButtonExcel_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             try
             {
+                MessageFilter.Register();
                 var patients = Core.Context.Users.Where(u => u.Role == "User").ToList();
                 var types = Core.Context.ServiceTypes.ToList();
 
@@ -203,6 +214,10 @@ namespace UP01_Prasolova_Clinic.Pages
             catch (Exception ex)
             {
                 Core.ShowError("Не удалось создать книгу Excel: " + ex.Message);
+            }
+            finally
+            {
+                MessageFilter.Revoke();
             }
         }
     }
