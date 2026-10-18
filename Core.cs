@@ -38,6 +38,27 @@ namespace UP01_Prasolova_Clinic
             MessageBox.Show(text, "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        public static string CheckPassword(string password)
+        {
+            if (password.Length < 6)
+                return "Пароль должен содержать не менее 6 символов";
+
+            bool hasDigit = false;
+
+            foreach (char c in password)
+            {
+                if (c >= '0' && c <= '9')
+                    hasDigit = true;
+                else if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')))
+                    return "Пароль может содержать только английские буквы и цифры";
+            }
+
+            if (!hasDigit)
+                return "Пароль должен содержать хотя бы одну цифру";
+
+            return null;
+        }
+
     }
 
 }
