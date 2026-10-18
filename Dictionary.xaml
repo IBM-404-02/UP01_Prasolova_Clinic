@@ -100,4 +100,26 @@
         <Setter Property="Margin" Value="13,0,0,0"/>
         <Setter Property="IsHitTestVisible" Value="False"/>
     </Style>
+    <Style TargetType="DataGrid">
+        <Setter Property="FontFamily" Value="{StaticResource MainFont}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+        <Setter Property="RowHeight" Value="30"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="AlternatingRowBackground" Value="{StaticResource PanelBrush}"/>
+    </Style>
+
+    <Style TargetType="DataGridColumnHeader">
+        <Setter Property="FontFamily" Value="{StaticResource MainFont}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="8,6"/>
+    </Style>
 </ResourceDictionary>
