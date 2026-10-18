@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace UP01_Prasolova_Clinic.Pages
 {
@@ -24,5 +25,29 @@ namespace UP01_Prasolova_Clinic.Pages
         {
             InitializeComponent();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            Grid grid = (Grid)box.Parent;
+
+            if (string.IsNullOrEmpty(box.Text))
+                grid.Children[1].Visibility = Visibility.Visible;
+            else
+                grid.Children[1].Visibility = Visibility.Hidden;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordBox box = (PasswordBox)sender;
+            Grid grid = (Grid)box.Parent;
+
+            if (string.IsNullOrEmpty(box.Password))
+                grid.Children[1].Visibility = Visibility.Visible;
+            else
+                grid.Children[1].Visibility = Visibility.Hidden;
+        }
     }
+
+
 }
