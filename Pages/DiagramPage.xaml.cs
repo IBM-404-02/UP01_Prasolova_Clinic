@@ -140,7 +140,7 @@ namespace UP01_Prasolova_Clinic.Pages
                 document.ExportAsFixedFormat(path, Word.WdExportFormat.wdExportFormatPDF);
 
                 Core.ShowInfo("Отчёт сохранён: " + path);
-                Process.Start(path);
+                Process.Start("explorer.exe", "/select,\"" + path + "\"");
             }
             catch (Exception ex)
             {
