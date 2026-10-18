@@ -9,6 +9,46 @@
       Title="Пользователь">
 
     <Grid>
-        
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+                <TextBlock Text="Смена пароля" Style="{DynamicResource TitleText}"/>
+
+                <Label Content="Логин"/>
+                <Grid>
+                    <TextBox x:Name="TextBoxLogin" MaxLength="50"
+                         ToolTip="Введите ваш логин"
+                         TextChanged="TextBox_TextChanged"/>
+                    <TextBlock Text="Введите логин" Style="{DynamicResource HintText}"/>
+                </Grid>
+
+                <Label Content="Текущий пароль"/>
+                <Grid>
+                    <PasswordBox x:Name="PasswordBoxCurrent" MaxLength="50"
+                             ToolTip="Введите пароль, который используете сейчас"
+                             PasswordChanged="PasswordBox_PasswordChanged"/>
+                    <TextBlock Text="Текущий пароль" Style="{DynamicResource HintText}"/>
+                </Grid>
+
+                <Label Content="Новый пароль"/>
+                <Grid>
+                    <PasswordBox x:Name="PasswordBoxNew" MaxLength="50"
+                             ToolTip="Не менее 6 символов: английские буквы и хотя бы одна цифра"
+                             PasswordChanged="PasswordBox_PasswordChanged"/>
+                    <TextBlock Text="Новый пароль" Style="{DynamicResource HintText}"/>
+                </Grid>
+
+                <Label Content="Подтверждение нового пароля"/>
+                <Grid>
+                    <PasswordBox x:Name="PasswordBoxConfirm" MaxLength="50"
+                             ToolTip="Повторите новый пароль"
+                             PasswordChanged="PasswordBox_PasswordChanged"/>
+                    <TextBlock Text="Повторите новый пароль" Style="{DynamicResource HintText}"/>
+                </Grid>
+
+                <Button x:Name="ButtonSave" Content="Сохранить"
+                    ToolTip="Сохранить новый пароль"
+                    Click="ButtonSave_Click" Margin="5,15,5,5"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
