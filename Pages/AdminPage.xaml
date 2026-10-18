@@ -59,6 +59,9 @@
             Click="ButtonEdit_Click"/>
             <Button x:Name="ButtonDelete" Content="Удалить" ToolTip="Удалить выбранные записи"
             Click="ButtonDelete_Click"/>
+
+            <Button x:Name="ButtonDiagram" Content="Диаграмма" ToolTip="Диаграмма расходов и экспорт отчётов"
+        Click="ButtonDiagram_Click"/>
         </WrapPanel>
     </Grid>
 </Page>

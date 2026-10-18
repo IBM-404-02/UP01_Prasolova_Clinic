@@ -117,5 +117,10 @@ namespace UP01_Prasolova_Clinic.Pages
             if (IsVisible)
                 UpdateData();
         }
+
+        private void ButtonDiagram_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new DiagramPage());
+        }
     }
 }
