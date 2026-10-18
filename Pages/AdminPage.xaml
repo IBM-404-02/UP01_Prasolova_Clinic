@@ -9,6 +9,51 @@
       Title="Администратор">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Оказанные услуги" Style="{DynamicResource TitleText}" Margin="0,10,0,5"/>
+
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
+            <Grid>
+                <TextBox x:Name="TextBoxSearch" ToolTip="Поиск по названию услуги или ФИО пациента"
+                     TextChanged="TextBoxSearch_TextChanged"/>
+                <TextBlock x:Name="txtHintSearch" Text="Услуга или ФИО пациента"
+                       Style="{DynamicResource HintText}"/>
+            </Grid>
+            <ComboBox x:Name="ComboBoxType" DisplayMemberPath="Name"
+                  ToolTip="Фильтр по типу услуги"
+                  SelectionChanged="ComboBoxType_SelectionChanged"/>
+            <ComboBox x:Name="ComboBoxSort" SelectedIndex="0"
+                  ToolTip="Сортировка"
+                  SelectionChanged="ComboBoxSort_SelectionChanged">
+                <ComboBoxItem Content="Сначала новые"/>
+                <ComboBoxItem Content="Сначала старые"/>
+                <ComboBoxItem Content="Цена по возрастанию"/>
+                <ComboBoxItem Content="Цена по убыванию"/>
+            </ComboBox>
+            <Button Content="Сбросить" ToolTip="Сбросить поиск, фильтр и сортировку"
+                Click="ButtonReset_Click"/>
+        </WrapPanel>
+
+        <DataGrid x:Name="DataGridServices" Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat=dd.MM.yyyy}" Width="100"/>
+                <DataGridTextColumn Header="Пациент" Binding="{Binding User.FIO}" Width="200"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding ServiceType.Name}" Width="150"/>
+                <DataGridTextColumn Header="Услуга" Binding="{Binding ServiceName}" Width="*"/>
+                <DataGridTextColumn Header="Кол-во" Binding="{Binding Quantity}" Width="75"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding Total, StringFormat={}{0:N2}}" Width="110"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0,0,0,5">
+            <Button x:Name="ButtonDelete" Content="Удалить" ToolTip="Удалить выбранные записи"
+                Click="ButtonDelete_Click"/>
+        </WrapPanel>
     </Grid>
 </Page>
