@@ -90,6 +90,7 @@
     <Compile Include="ServiceRendered.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ServiceRenderedExt.cs" />
     <Compile Include="ServiceType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
