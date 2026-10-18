@@ -113,6 +113,7 @@ namespace UP01_Prasolova_Clinic.Pages
             try
             {
                 var app = new Word.Application();
+                app.Visible = true;
                 Word.Document document = CreateWordReport(app);
 
                 string path = Path.Combine(documentsFolder, "Отчет_по_услугам.docx");
@@ -132,15 +133,14 @@ namespace UP01_Prasolova_Clinic.Pages
             try
             {
                 var app = new Word.Application();
+                app.Visible = true;
                 Word.Document document = CreateWordReport(app);
 
                 string path = Path.Combine(documentsFolder, "Отчет_по_услугам.pdf");
-                document.SaveAs2(path, Word.WdSaveFormat.wdFormatPDF);
-                document.Close(false);
-                app.Quit();
+                document.ExportAsFixedFormat(path, Word.WdExportFormat.wdExportFormatPDF);
 
-                Process.Start(path);
                 Core.ShowInfo("Отчёт сохранён: " + path);
+                Process.Start(path);
             }
             catch (Exception ex)
             {
